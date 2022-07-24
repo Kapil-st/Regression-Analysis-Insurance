@@ -79,6 +79,14 @@ df.dtypes
 x = df.drop(['charges'], axis = 1)  #Independent Variables
 y = df['charges']                   #Target Variables
 
+### Linear regression with train-test split
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.20)
+model = LinearRegression()
+model.fit(X_train, y_train)
+r_sq = model.score(x, y)
+print(f"coefficient of determination: {r_sq}")
+
 ### Prepare a list of models
 models = []
 models.append(('Linear', LinearRegression()))
